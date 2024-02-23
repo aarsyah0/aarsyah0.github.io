@@ -25,8 +25,19 @@
         <div class="container">
             <h2>Selamat Datang di Portofolio Saya</h2>
             <p>Temukan karya-karya terbaru saya di sini.</p>
+            <p>NAMA: {{$nama}}</p>
+            <p>Mata Kuliah :</p>
+            <ul>
+                @foreach($mapel as $mp)
+                <li>
+                    {{$mp}}
+                </li>
+                @endforeach
+            </ul>
         </div>
     </section>
+
+
 
     <!-- Other sections for featured projects, testimonials, etc. -->
 
