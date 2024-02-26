@@ -1065,7 +1065,7 @@
                                             </div>
                                             <!-- /.direct-chat-infos -->
                                             <img class="direct-chat-img"
-                                                src="{{ asset('dist/img/user1-128x128.jpg') }}"
+                                                src="{{ asset('assets/dist/img/user1-128x128.jpg') }}"
                                                 alt="message user image">
                                             <!-- /.direct-chat-img -->
                                             <div class="direct-chat-text">
@@ -1102,7 +1102,7 @@
                                             <li>
                                                 <a href="#">
                                                     <img class="contacts-list-img"
-                                                        src="{{ asset('aasets/dist/img/user1-128x128.jpg') }}"
+                                                        src="{{ asset('assets/dist/img/user1-128x128.jpg') }}"
                                                         alt="User Avatar">
 
                                                     <div class="contacts-list-info">
@@ -1139,7 +1139,7 @@
                                             <li>
                                                 <a href="#">
                                                     <img class="contacts-list-img"
-                                                        src="{{ asset('aasets/dist/img/user3-128x128.jpg') }}"
+                                                        src="{{ asset('assets/dist/img/user3-128x128.jpg') }}"
                                                         alt="User Avatar">
 
                                                     <div class="contacts-list-info">
