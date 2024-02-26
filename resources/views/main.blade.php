@@ -1,5 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="icon" type="image/png" href="images/DB_16х16.png">
     <meta charset="utf-8">
@@ -31,7 +47,11 @@
           type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- inject:css -->
+    <link rel="stylesheet" href="{{('assets/dist/css/lib/getmdl-select.min.css')}}">
+    <link rel="stylesheet" href="{{('assets/dist/css/lib/nv.d3.min.css')}}">
+    <link rel="stylesheet" href="{{('assets/dist/css/application.min.css')}}">
     <!-- endinject -->
+
 </head>
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-small-screen">
@@ -250,12 +270,12 @@
             <div class="scroller" id="scroller">
                 <div class="scroll__container" id="scroll__container">
                     <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" href="index.html">
+                        <a class="mdl-navigation__link mdl-navigation__link--current" href="index.html">
                             <i class="material-icons" role="presentation">dashboard</i>
                             Dashboard
                         </a>
-                        <div class="sub-navigation sub-navigation--show">
-                            <a class="mdl-navigation__link mdl-navigation__link--current">
+                        <div class="sub-navigation">
+                            <a class="mdl-navigation__link">
                                 <i class="material-icons">view_comfy</i>
                                 UI
                                 <i class="material-icons">keyboard_arrow_down</i>
@@ -270,7 +290,7 @@
                                 <a class="mdl-navigation__link" href="ui-colors.html">
                                     Colors
                                 </a>
-                                <a class="mdl-navigation__link mdl-navigation__link--current" href="ui-form-components.html">
+                                <a class="mdl-navigation__link" href="ui-form-components.html">
                                     Forms
                                 </a>
                                 <a class="mdl-navigation__link" href="ui-icons.html">
@@ -321,7 +341,6 @@
                                 </a>
                             </div>
                         </div>
-
                         <div class="mdl-layout-spacer"></div>
                         <hr>
                         <a class="mdl-navigation__link" href="https://github.com/CreativeIT/getmdl-dashboard">
@@ -335,101 +354,234 @@
         </div>
     </div>
 
-    <main class="mdl-layout__content ui-form-components">
+    <main class="mdl-layout__content">
 
-        <div class="mdl-grid mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+        <div class="mdl-grid mdl-grid--no-spacing dashboard">
 
-            <div class="mdl-cell mdl-cell--7-col-desktop mdl-cell--7-col-tablet mdl-cell--4-col-phone">
-                <div class="mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h5 class="mdl-card__title-text text-color--white">Text fields</h5>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <form class="form form--basic">
-                            <div class="mdl-grid">
-                                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone form__article">
-                                    <h3 class="text-color--smooth-gray">BASIC INPUT</h3>
-                                    <div class="mdl-textfield mdl-js-textfield full-size">
-                                        <input class="mdl-textfield__input" type="text" id="first-name">
-                                        <label class="mdl-textfield__label" for="first-name">First Name</label>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield full-size">
-                                        <input class="mdl-textfield__input" type="text" id="last-name">
-                                        <label class="mdl-textfield__label" for="last-name">Last Name</label>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield full-size">
-                                        <input class="mdl-textfield__input" type="text" id="e-mail">
-                                        <label class="mdl-textfield__label" for="e-mail">Email</label>
-                                    </div>
-                                </div>
-                                <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone form__article">
-                                    <h3 class="text-color--smooth-gray">INPUT WITH FLOATING LABEL</h3>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
-                                        <input class="mdl-textfield__input" type="text" id="floating-first-name">
-                                        <label class="mdl-textfield__label" for="floating-first-name">First Name</label>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
-                                        <input class="mdl-textfield__input" type="text" id="floating-last-name">
-                                        <label class="mdl-textfield__label" for="floating-last-name">Last Name</label>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
-                                        <input class="mdl-textfield__input" type="text" id="floating-e-mail">
-                                        <label class="mdl-textfield__label" for="floating-e-mail">Email</label>
-                                    </div>
-                                </div>
+            <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+
+                <!-- Pie chart-->
+                <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp pie-chart">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">My Day</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <div class="pie-chart__container">
+
                             </div>
-                        </form>
+                        </div>
                     </div>
+                </div>
+                <!-- Weather widget-->
+                <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp weather">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Now</h2>
+
+                            <div class="mdl-layout-spacer"></div>
+                            <div class="mdl-card__subtitle-text">
+                                <i class="material-icons">room</i>
+                                Minsk, Belarus
+                            </div>
+                        </div>
+                        <div class="mdl-card__supporting-text mdl-card--expand">
+                            <p class="weather-temperature">-11<sup>&deg;</sup></p>
+
+                            <p class="weather-description">
+                                Cloudy and snow
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Trending widget-->
+                <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp trending">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Trending</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <ul class="mdl-list">
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content list__item-text">UX</span>
+                                    <span class="mdl-list__item-secondary-content">
+                                        <i class="material-icons trending__arrow-up" role="presentation">&#xE5C7</i>
+                                    </span>
+                                    <span class="mdl-list__item-secondary-content trending__percent">1 %</span>
+                                </li>
+                                <li class="mdl-list__item list__item--border-top">
+                                    <span class="mdl-list__item-primary-content list__item-text">PHP</span>
+                                    <span class="mdl-list__item-secondary-content">
+                                        <i class="material-icons trending__arrow-down" role="presentation">&#xE5C5</i>
+                                    </span>
+                                    <span class="mdl-list__item-secondary-content trending__percent">2 %</span>
+                                </li>
+                                <li class="mdl-list__item list__item--border-top">
+                                    <span class="mdl-list__item-primary-content list__item-text ">Big Data</span>
+                                    <span class="mdl-list__item-secondary-content">
+                                        <i class="material-icons trending__arrow-up" role="presentation">&#xE5C7</i>
+                                    </span>
+                                    <span class="mdl-list__item-secondary-content trending__percent">5 %</span>
+                                </li>
+                                <li class="mdl-list__item list__item--border-top">
+                                    <span class="mdl-list__item-primary-content list__item-text">Material Design</span>
+                                    <span class="mdl-list__item-secondary-content">
+                                        <i class="material-icons trending__arrow-up" role="presentation">&#xE5C7</i>
+                                    </span>
+                                    <span class="mdl-list__item-secondary-content trending__percent">18 %</span>
+                                </li>
+                                <li class="mdl-list__item list__item--border-top">
+                                    <span class="mdl-list__item-primary-content">JavaScript</span>
+                                    <span class="mdl-list__item-secondary-content">
+                                        <i class="material-icons trending__arrow-up" role="presentation">&#xE5C7</i>
+                                    </span>
+                                    <span class="mdl-list__item-secondary-content trending__percent">17 %</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cotoneaster card-->
+                <div class="mdl-cell mdl-cell--5-col-desktop mdl-cell--5-col-tablet mdl-cell--2-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp cotoneaster">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text">Cotoneaster</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <div>
+                                Cotoneaster is a genus of flowering plants in the rose family, Roseaceae, netive to the
+                                Palaearctic region, with a strong concentration of diversity in the genus in the
+                                mountains
+                                of southwestern China and the Himalayas.
+                            </div>
+                            <a href="https://en.wikipedia.org/wiki/Cotoneaster" target="_blank">Wikipedia</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Line chart-->
+                <div class="mdl-cell mdl-cell--7-col-desktop mdl-cell--7-col-tablet mdl-cell--4-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp line-chart">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Startup Financing Cycle</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <div class="line-chart__container">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Table-->
+                <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone ">
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp projects-table">
+                        <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Project</th>
+                            <th class="mdl-data-table__cell--non-numeric">Responsible</th>
+                            <th class="mdl-data-table__cell--non-numeric">Client contact</th>
+                            <th class="mdl-data-table__cell--non-numeric">Deadline</th>
+                            <th class="mdl-data-table__cell--non-numeric">Progress</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">Darkboard</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <span class="label label--mini color--light-blue">Alex</span>
+                                <span class="label label--mini background-color--primary">Dina</span>
+                                <span class="label label--mini color--orange">Misha</span>
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">Luke@skywalker.com</td>
+                            <td class="mdl-data-table__cell--non-numeric">Jun 15</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <div id="task1" class="mdl-progress mdl-js-progress"></div>
+                                <div class="mdl-tooltip" for="task1">
+                                    44%
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">Big financial app</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <span class="label label--mini color--orange">Vlada</span>
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">Boss@financial.com</td>
+                            <td class="mdl-data-table__cell--non-numeric">Mar 1</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <div id="task2" class="mdl-progress mdl-js-progress"></div>
+                                <div class="mdl-tooltip" for="task2">
+                                    14%
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="is-selected">
+                            <td class="mdl-data-table__cell--non-numeric">New Year office decoration</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <span class="label label--mini background-color--primary">Dina</span>
+                                <span class="label label--mini color--orange">Vlada</span>
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">info@creativeit.io</td>
+                            <td class="mdl-data-table__cell--non-numeric">Dec 25</td>
+                            <td class="mdl-data-table__cell--non-numeric task-done">
+                                <i id="task3" class="material-icons">done</i>
+                                <span>Complete</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">Don't worry, be happy!!!</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <span class="label label--mini background-color--secondary">Everybody</span>
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">Contact@happyness.com</td>
+                            <td class="mdl-data-table__cell--non-numeric">Yesterday</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <div id="task4" class="mdl-progress mdl-js-progress"></div>
+                                <div class="mdl-tooltip" for="task4">
+                                    31%
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div class="mdl-cell mdl-cell--5-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone">
-                <div class="mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h5 class="mdl-card__title-text text-color--white">PROFILE INFO</h5>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <form class="form form--basic">
-                            <div class="mdl-grid">
-                                <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell--3-col-tablet mdl-cell--1-col-phone">
-                                    <div class="profile-image color--smooth-gray profile-image--round">
-                                        <img src="images/Bobby.PNG">
-                                    </div>
-                                </div>
-                                <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone form__article">
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
-                                        <input class="mdl-textfield__input" type="text" value="Bob" id="profile-floating-first-name">
-                                        <label class="mdl-textfield__label" for="profile-floating-first-name">First Name</label>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
-                                        <input class="mdl-textfield__input" type="text" value="Kelso" id="profile-floating-last-name">
-                                        <label class="mdl-textfield__label" for="profile-floating-last-name">Last Name</label>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
-                                        <input class="mdl-textfield__input" type="text" value="BobbyK@darkboard.io" id="profile-floating-e-mail">
-                                        <label class="mdl-textfield__label" for="floating-e-mail">Email</label>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select full-size">
-                                        <input class="mdl-textfield__input" type="text" id="location" readonly tabIndex="-1"/>
-
-                                        <label class="mdl-textfield__label" for="location">Location</label>
-
-                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu dark_dropdown" for="location">
-                                            <li class="mdl-menu__item">Minsk</li>
-                                            <li class="mdl-menu__item">Berlin</li>
-                                            <li class="mdl-menu__item">Moscow</li>
-                                            <li class="mdl-menu__item">NYC</li>
-                                        </ul>
-
-                                        <label for="location">
-                                            <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
-                                        </label>
-                                    </div>
-                                </div>
+            <div class="mdl-grid mdl-cell mdl-cell--3-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+                <!-- Robot card-->
+                <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--2-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp robot">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text">BB-8</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <div>
+                                A skittish but loyal astromech, BB-8 accompanied Poe Dameron on many missions for the
+                                Resistance helping keep his X-wing in working order.
                             </div>
-                        </form>
+                            <a href="http://www.starwars.com/databank/bb-8" target="_blank">Star Wars Databank</a>
+                        </div>
                     </div>
                 </div>
+                <!-- ToDo_widget-->
+                <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--2-col-phone">
+                    <div class="mdl-card mdl-shadow--2dp todo">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">To-do list</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <ul class="mdl-list">
+
+                            </ul>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect">remove selected</button>
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-shadow--8dp mdl-button--colored ">
+                                <i class="material-icons mdl-js-ripple-effect">add</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -438,6 +590,23 @@
 </div>
 
 <!-- inject:js -->
+<script src="{{('assets/dist/js/d3.min.js')}}"></script>
+<script src="{{('assets/dist/js/getmdl-select.min.js')}}"></script>
+<script src="{{('assets/dist/js/material.min.js')}}"></script>
+<script src="{{('assets/dist/js/nv.d3.min.js')}}"></script>
+<script src="{{('assets/dist/js/layout/layout.min.js')}}"></script>
+<script src="{{('assets/dist/js/scroll/scroll.min.js')}}"></script>
+<script src="{{('assets/dist/js/widgets/charts/discreteBarChart.min.js')}}"></script>
+<script src="{{('assets/dist/js/widgets/charts/linePlusBarChart.min.js')}}"></script>
+<script src="{{('assets/dist/js/widgets/charts/stackedBarChart.min.js')}}"></script>
+<script src="{{('assets/dist/js/widgets/employer-form/employer-form.min.js')}}"></script>
+<script src="{{('assets/dist/js/widgets/line-chart/line-charts-nvd3.min.js')}}"></script>
+<script src="{{('assets/dist/js/widgets/map/maps.min.js')}}"></script>
+<script src="{{('assets/dist/js/widgets/pie-chart/pie-charts-nvd3.min.js')}}"></script>
+<script src="{{('assets/dist/js/widgets/table/table.min.js')}}"></script>
+<script src="{{('assets/dist/js/widgets/todo/todo.min.js')}}"></script>
+
 <!-- endinject -->
+
 </body>
 </html>

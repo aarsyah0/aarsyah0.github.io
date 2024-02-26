@@ -17,7 +17,7 @@ use App\Http\Controllers\GetDataController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('main');
 });
 Route::get('home', [HomeController::class, 'index']);
 Route::get('biodata', [HomeController::class, 'biodata']);
