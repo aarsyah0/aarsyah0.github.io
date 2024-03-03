@@ -33,4 +33,33 @@ class BarangController extends Controller
 
         return redirect()->route('barang');
     }
+
+    public function edit($id)
+    {
+        $barang = Barang::find($id)->first();
+
+        return view('barang.form', ['barang'=>$barang]);
+    }
+
+    public function update($id, Request $request)
+    {
+        $data = [
+            'kode_barang'=>$request->kode_barang,
+            'nama_barang'=>$request->nama_barang,
+            'kategori_barang'=>$request->kategori_barang,
+            'harga'=>$request->harga,
+            'jumlah'=>$request->jumlah,
+        ];
+
+        Barang::find($id)->update($data);
+
+        return redirect()->route('barang');
+    }
+
+    public function hapus($id)
+    {
+        Barang::find($id)->delete();
+
+        return redirect()->route('barang');
+    }
 }
