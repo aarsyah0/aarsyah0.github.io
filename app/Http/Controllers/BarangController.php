@@ -33,6 +33,30 @@ class BarangController extends Controller
 
         return redirect()->route('barang');
     }
+//     public function simpan(Request $request)
+// {
+//     $request->validate([
+//         'kode_barang' => 'required',
+//         'nama_barang' => 'required',
+//         'kategori_barang' => 'required',
+//         'harga' => 'required|numeric',
+//         'jumlah' => 'required|numeric',
+//     ]);
+
+//     $data = [
+//         'kode_barang'=>$request->kode_barang,
+//         'nama_barang'=>$request->nama_barang,
+//         'kategori_barang'=>$request->kategori_barang,
+//         'harga'=>$request->harga,
+//         'jumlah'=>$request->jumlah,
+//     ];
+
+//     Barang::create($data);
+
+//     $barang = Barang::latest()->take(1)->get();
+
+//     return view('barang.postdata', ['data' => $barang]);
+// }
 
     public function edit($id)
     {
